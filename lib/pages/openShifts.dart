@@ -22,7 +22,7 @@ class _OpenShiftsPageState extends State<OpenShiftsPage> {
         body: new ListView.builder(
             itemCount: skills.length,
             itemBuilder: (BuildContext ctxt, int index) {
-              return new OpenShiftCard();
+              return OpenShiftCard();
             }),
         drawer: Drawer(
           child: CustomDrawer(),

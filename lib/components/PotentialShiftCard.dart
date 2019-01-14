@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import './../widgets/SkillItem.dart';
-import './PatientDetails.dart';
+import './PotentialPatientDetails.dart';
 
-class OpenShiftCard extends StatefulWidget {
+class PotentialShiftCard extends StatefulWidget {
   @override
-  OpenShiftCardState createState() => new OpenShiftCardState();
+  PotentialShiftCardState createState() => new PotentialShiftCardState();
 }
 
-class OpenShiftCardState extends State<OpenShiftCard> {
-  OpenShiftCardState(
+class PotentialShiftCardState extends State<PotentialShiftCard> {
+  PotentialShiftCardState(
       // {@required this.index, @required this.onPress}
       );
   // final index;
@@ -34,7 +34,7 @@ class OpenShiftCardState extends State<OpenShiftCard> {
     return Card(
         // margin: const EdgeInsets.only(bottom: 20.0),
         child: SizedBox(
-            height: this.showMoreFlag ? 250.0 : 220,
+            height: this.showMoreFlag ? 200 : 170,
             width: double.infinity,
             child: new Container(
                 // padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
@@ -103,7 +103,7 @@ class OpenShiftCardState extends State<OpenShiftCard> {
                             ],
                           ))
                       : new Container(),
-                  PatientDetails()
+                  PotentialPatientDetails()
                 ],
               ),
             )))));

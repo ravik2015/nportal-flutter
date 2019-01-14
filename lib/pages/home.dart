@@ -45,26 +45,6 @@ class _HomeWidgetState extends State<HomeWidget> {
     ListTile makeListTile(Schedule schedule) => ListTile(
           contentPadding:
               EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          leading: Container(
-            padding: EdgeInsets.only(right: 12.0),
-            decoration: new BoxDecoration(
-                border: new Border(
-                    right: new BorderSide(width: 1.0, color: Colors.grey))),
-            child: Column(children: <Widget>[
-              Text(
-                new DateFormat("d").format(schedule.date),
-                style: TextStyle(
-                    color: const Color(0xffb2D3F9E),
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                new DateFormat("EE").format(schedule.date),
-                style: TextStyle(
-                    color: const Color(0xffb2D3F9E),
-                    fontWeight: FontWeight.bold),
-              )
-            ]),
-          ),
           title: Text(
             schedule.name,
             style: TextStyle(
@@ -82,21 +62,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                       style: TextStyle(color: const Color(0xffb2D3F9E)))),
             ],
           ),
-          trailing: Icon(Icons.keyboard_arrow_right,
-              color: const Color(0xffb2D3F9E), size: 30.0),
           onTap: () {
             print("details");
             _askedToLead();
           },
-        );
-
-    Card makeCard(Schedule schedule) => Card(
-          elevation: 8.0,
-          margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-          child: Container(
-            decoration: BoxDecoration(color: Colors.white),
-            child: makeListTile(schedule),
-          ),
         );
 
     return Scaffold(
@@ -107,20 +76,62 @@ class _HomeWidgetState extends State<HomeWidget> {
         body: new Column(
           children: <Widget>[
             new Expanded(
+                flex: 1,
                 child: Container(
                     alignment: Alignment(1.0, 1.0), child: CustomWeekChange())),
             new Expanded(
-                flex: 10,
-                child: Center(
-                  child: ListView.builder(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: schedules.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return makeCard(schedules[index]);
-                    },
-                  ),
+                flex: 9,
+                child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: schedules.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                                child: Column(children: <Widget>[
+                              Text(
+                                new DateFormat("d")
+                                    .format(schedules[index].date),
+                                style: TextStyle(
+                                    color: const Color(0xffb2D3F9E),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                new DateFormat("EE")
+                                    .format(schedules[index].date),
+                                style: TextStyle(
+                                    color: const Color(0xffb2D3F9E),
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ])),
+                          ),
+                          Expanded(
+                            flex: 8,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.grey,
+                                    width: 1.0,
+                                  ),
+                                  left: BorderSide(
+                                    color: Colors.grey,
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                              child: makeListTile(schedules[index]),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
                 ))
           ],
         ),
