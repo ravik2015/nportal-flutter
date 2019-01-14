@@ -34,7 +34,7 @@ class OpenShiftCardState extends State<OpenShiftCard> {
     return Card(
         // margin: const EdgeInsets.only(bottom: 20.0),
         child: SizedBox(
-            height: 250.0,
+            height: this.showMoreFlag ? 250.0 : 220,
             width: double.infinity,
             child: new Container(
                 // padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),

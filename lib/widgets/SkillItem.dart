@@ -13,7 +13,8 @@ class SkillItem extends StatelessWidget {
           onPress();
         },
         child: Container(
-            padding: EdgeInsets.only(top: 5),
+            // padding: EdgeInsets.only(top: 10),
+            alignment: Alignment(0.0, 0.0),
             height: boxHeight,
             width: boxWidth,
             decoration: BoxDecoration(
