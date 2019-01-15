@@ -13,8 +13,7 @@ class CustomDrawer extends StatelessWidget {
     _logout() async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.remove(AuthUtils.authTokenKey);
-      prefs.remove(AuthUtils.userIdKey);
-      prefs.remove(AuthUtils.nameKey);
+      prefs.remove(AuthUtils.userData);
       Navigator.of(context).pushReplacementNamed('/');
     }
 

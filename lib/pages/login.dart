@@ -60,10 +60,10 @@ class _LoginPageState extends State<LoginPage> {
     if (_valid()) {
       var responseJson = await NetworkUtils.authenticateUser(
           _emailController.text, _passwordController.text);
-
-      print(responseJson);
-
-      if (responseJson == null) {
+      if (responseJson["status"] == 0) {
+        NetworkUtils.showSnackBar(
+            _scaffoldKey, responseJson["error"][0]["message"]);
+      } else if (responseJson == null) {
         NetworkUtils.showSnackBar(_scaffoldKey, 'Something went wrong!');
       } else if (responseJson == 'NetworkError') {
         NetworkUtils.showSnackBar(_scaffoldKey, null);
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 16.0),
                 Text(
-                  'ACT Home',
+                  'ACT Home1',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: const Color(0xffb2D3F9E),
