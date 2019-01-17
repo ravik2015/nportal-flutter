@@ -6,6 +6,7 @@ import './../components/DetailsModal.dart';
 import './../widgets/CustomDrawer.dart';
 import './../models/schedule_model.dart';
 import './../widgets/CustomWeekChange.dart';
+import './../utils/schedule_util.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -27,8 +28,14 @@ class _HomeWidgetState extends State<HomeWidget> {
   void initState() {
     super.initState();
     String formatDate(DateTime date) => new DateFormat("MMMM d").format(date);
-    print(formatDate);
     schedules = data;
+    _loadSchedules();
+  }
+
+  _loadSchedules() async {
+    var schedules = await ScheduleUtils.fetchSchedules();
+    print("schedules");
+    print(schedules);
   }
 
   Future<void> _askedToLead() async {

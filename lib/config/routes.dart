@@ -4,6 +4,7 @@ import './../pages/home.dart';
 import './../pages/lessons/lessons.dart';
 import './../pages/openShifts.dart';
 import './../pages/potentialShifts.dart';
+import './../pages/printableForms.dart';
 
 class Routes extends StatelessWidget {
   // This widget is the root of your application.
@@ -32,7 +33,7 @@ class Routes extends StatelessWidget {
         '/home': (context) => Home(),
         '/openShifts': (context) => OpenShiftsPage(),
         '/potentialShifts': (context) => PotentialShiftsPage(),
-
+        '/printableForms': (context) => PrintableFormsPage(),
         '/lesson': (context) => Lessons(),
       },
     );

@@ -44,7 +44,8 @@ class NetworkUtils {
 
   static fetch(var authToken, var endPoint) async {
     var uri = host + endPoint;
-
+    print(authToken);
+    print(uri);
     try {
       final response = await http.get(
         uri,

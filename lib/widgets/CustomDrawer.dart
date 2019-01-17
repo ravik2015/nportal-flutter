@@ -163,7 +163,8 @@ class CustomDrawer extends StatelessWidget {
                           style:
                               new TextStyle(color: Colors.white, fontSize: 18),
                         ),
-                        onTap: () => _underDevelopment(),
+                        onTap: () => Navigator.pushReplacementNamed(
+                            context, '/printableForms'),
                       ),
                       new Divider(),
                       new ListTile(
