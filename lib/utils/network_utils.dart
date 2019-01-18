@@ -9,6 +9,8 @@ class NetworkUtils {
   static final String productionHost = 'https://authflow.herokuapp.com';
   static final String developmentHost = 'http://192.168.31.110:3000';
   static final String serverurl = "https://api.acthomehealthservices.us";
+  static final String serverurl2 =
+      "https://api.acthomehealthservices.us/nurses";
 
   static dynamic authenticateUser(String email, String password) async {
     var uri = host + AuthUtils.endPoint;
@@ -36,23 +38,28 @@ class NetworkUtils {
   }
 
   static showSnackBar(GlobalKey<ScaffoldState> scaffoldKey, String message) {
-    print(scaffoldKey);
+    print(message);
     scaffoldKey.currentState.showSnackBar(new SnackBar(
       content: new Text(message ?? 'You are offline'),
     ));
   }
 
   static fetch(var authToken, var endPoint) async {
-    var uri = host + endPoint;
+    var uri = serverurl2 + endPoint;
     print(authToken);
     print(uri);
     try {
       final response = await http.get(
         uri,
-        headers: {'Authorization': authToken},
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": authToken,
+        },
       );
 
       final responseJson = json.decode(response.body);
+      print(responseJson);
       return responseJson;
     } catch (exception) {
       print(exception);

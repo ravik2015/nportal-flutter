@@ -4,8 +4,8 @@ import './network_utils.dart';
 
 class ScheduleUtils {
   // static final String endPoint = '/api/v1/auth_user';
-  static final String endPoint =
-      '/schedules/my?startdate=2018-11-01T14:29:56.400Z&enddate=2018-11-22T14:29:56.400Z';
+  // static final String endPoint =
+  //     '/schedules?startDate=01/18/2019&endDate=01/25/2019&page=1&limit=15';
 
   // Keys to store and fetch data from SharedPreferences
   static final String authTokenKey = 'auth_token';
@@ -17,7 +17,10 @@ class ScheduleUtils {
     return prefs.getString(authTokenKey);
   }
 
-  static fetchSchedules() async {
+  static fetchSchedules(from, to) async {
+    final String endPoint =
+        '/schedules?startDate=${from}&endDate=${to}&page=1&limit=15';
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var responseJson = await NetworkUtils.fetch(getToken(prefs), endPoint);
     print("myschedule for mw====");
